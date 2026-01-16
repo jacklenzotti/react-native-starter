@@ -1,14 +1,12 @@
 # React Native TypeScript Starter
 
-A production-ready React Native starter template with TypeScript, configured for iOS and Android development.
+React Native starter template with TypeScript, configured for iOS and Android development + VS Code Debugging
 
 ## Stack
 
-- **React Native 0.83.1** - Latest stable version
-- **TypeScript** - Full type safety throughout
-- **React Native CLI** - No Expo, full control over native code
-- **VS Code** - Configured with debugging support
-- **iOS & Android** - Native support for both platforms
+- **React Native**
+- **TypeScript**
+- **iOS & Android**
 
 ## Prerequisites
 
@@ -41,8 +39,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 ### 1. Clone and Install
 
 ```bash
-git clone <your-repo-url>
-cd react-native-starter
+git clone https://github.com/jacklenzotti/react-native-starter
 npm install
 ```
 
@@ -62,10 +59,6 @@ export PATH="$HOME/.nvm/versions/node/v22.20.0/bin:$PATH"
 bundle exec pod install
 cd ..
 ```
-
-**Note:** This project includes custom fixes for Ruby 4.0+ compatibility:
-- `Gemfile` includes `nkf` gem for Ruby 4.0 stdlib compatibility
-- `ios/Podfile` uses direct require for `react_native_pods.rb`
 
 ### 3. Android Setup
 
@@ -108,7 +101,7 @@ The iOS simulator will launch automatically.
 This project is configured for VS Code debugging:
 
 1. Open project in VS Code: `code .`
-2. Install the **React Native Tools** extension (msjsdiag.vscode-react-native)
+2. Install the **React Native Tools** extension
 3. Press **F5** and select:
    - **Debug iOS** - Launch iOS simulator with debugging
    - **Debug Android** - Launch Android emulator with debugging
@@ -118,9 +111,7 @@ Set breakpoints in TypeScript files and debug with full variable inspection.
 
 ### Hot Reload
 
-When Metro is running, changes to your code will automatically refresh:
-- Save any `.tsx` or `.ts` file
-- The app updates instantly in the simulator/emulator
+When Metro is running, changes to your code will automatically refresh
 
 For manual refresh:
 - **iOS**: Press `R` in the simulator
@@ -142,92 +133,6 @@ react-native-starter/
 ├── tsconfig.json         # TypeScript configuration
 ├── Gemfile               # Ruby dependencies (CocoaPods)
 └── babel.config.js       # Babel configuration
-```
-
-## Troubleshooting
-
-### iOS Build Issues
-
-**"database is locked" error:**
-```bash
-killall -9 xcodebuild
-rm -rf ~/Library/Developer/Xcode/DerivedData/ReactNativeStarter-*
-npm run ios
-```
-
-**CocoaPods issues:**
-```bash
-cd ios
-rm -rf Pods Podfile.lock
-bundle exec pod install --repo-update
-cd ..
-```
-
-### Android Build Issues
-
-**Gradle build fails:**
-```bash
-cd android
-./gradlew clean
-cd ..
-npm run android
-```
-
-**Multiple builds running:**
-```bash
-./gradlew --stop
-```
-
-### General Issues
-
-**Metro bundler issues:**
-```bash
-npm start -- --reset-cache
-```
-
-**Clean everything:**
-```bash
-rm -rf node_modules
-npm install
-cd ios && rm -rf Pods Podfile.lock && bundle exec pod install && cd ..
-cd android && ./gradlew clean && cd ..
-```
-
-## Key Configuration Files
-
-### Modified from Default Template
-
-1. **`Gemfile`** - Added `nkf` gem for Ruby 4.0+ compatibility
-2. **`ios/Podfile`** - Uses direct require instead of node resolution
-3. **`.vscode/`** - Added debugging configurations
-4. **`.gitignore`** - Excludes `.bundle/`, `Gemfile.lock`, `install-pods.sh`
-
-## Next Steps
-
-### Recommended Additions
-
-- **Navigation**: [React Navigation](https://reactnavigation.org/)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand) or [Redux Toolkit](https://redux-toolkit.js.org/)
-- **UI Library**: [React Native Paper](https://reactnativepaper.com/) or [NativeBase](https://nativebase.io/)
-- **Forms**: [React Hook Form](https://react-hook-form.com/)
-- **API Client**: [Axios](https://axios-http.com/) or [TanStack Query](https://tanstack.com/query)
-- **Testing**: [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
-
-### Path Aliases
-
-Consider adding path aliases to `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@screens/*": ["src/screens/*"],
-      "@utils/*": ["src/utils/*"]
-    }
-  }
-}
 ```
 
 ## Resources
